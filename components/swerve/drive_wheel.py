@@ -5,6 +5,7 @@ from phoenix6.signals import NeutralModeValue
 from wpimath.controller import PIDController
 from phoenix6.controls.duty_cycle_out import DutyCycleOut
 
+
 class DriveWheel:
     motor: TalonFX
 
@@ -62,6 +63,6 @@ class DriveWheel:
             self.motor.set_control(DutyCycleOut(0))
         else:
             target_speed_rpm = self._target_speed / DriveWheel._meters_per_rotation
-            output = self.pid.calculate(self.get_current_velocity(),target_speed_rpm, 0)
+            output = self.pid.calculate(self.get_current_velocity(), target_speed_rpm) 
             self.motor.set_control(DutyCycleOut(output))
         
